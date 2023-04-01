@@ -14,6 +14,9 @@ function App() {
   const [artistData, setArtistData] = useState(null);
   const [lowerBound, setLowerBound] = useState(0);
   const [upperBound, setUpperBound] = useState(0);
+  const [minCount, setMinCount] = useState(0);
+  const [maxCount, setMaxCount] = useState(0);
+  const [currentSort, setCurrentSort] = useState("none");
 
   useEffect(() => {
     // API Accces parameters provided by Spotify
@@ -28,11 +31,24 @@ function App() {
   }, [])
 
   useEffect(()=>{
+    // reset max song count
+    setMaxCount(maxTrackCount());
+    // reset min song count
+    setMinCount(minTrackCount());
     // reset upper bound
     setUpperBound(maxTrackCount());
     // reset lower bound
-    setLowerBound(minTrackCount())
+    setLowerBound(minTrackCount());
   }, [initialAlbumsData])
+
+
+  useEffect(() => {
+    handleSortOptionChange(currentSort);
+  }, [albums])
+
+  useEffect(() => {
+    filterBySongs()
+  }, [upperBound, lowerBound])
 
    // helper function to find maximum number of tracks
    const maxTrackCount = () => {
@@ -79,35 +95,34 @@ function App() {
   }
 
   const filterBySongs = () => {
-    const filteredData = albums.filter((album) => album.total_tracks >= lowerBound && album.total_tracks <= upperBound)
+    // from initial albums data filter out albums which are not in current upper-lower bound range
+    const filteredData = initialAlbumsData.filter((album) => album.total_tracks >= lowerBound && album.total_tracks <= upperBound)
+    // reset current albums data
     setAlbums([...filteredData])
   }
 
-  const validSongFilter = (value, type) => {
-    if (value < minTrackCount() && value > maxTrackCount()){
-      alert("This artist has no albums with " + value + " tracks.")
-    } else if (type == 'l' && value > upperBound){
-      alert("Invalid! You can set lower bound greater than upper bound.")
-    } else if (type == 'u' && value < lowerBound){
-      alert("Invalid! You can set upper bound lesser than lower bound.")
-    } else{
-      return true;
+  const updateBound = (value, type) => {
+    // check if change in value is inside of the max-min range
+    if (value >= minCount && value <= maxCount){
+      console.log(upperBound, lowerBound, type, value)
+      console.log(type === 'l' && value <= upperBound);
+      // update lower bound if intended lower bound value will be lesser than equal to current upper bound value
+      if (type === 'l' && value <= upperBound){
+        console.log("It's here")
+        setLowerBound(value) 
+      // update upper bound if intended upper bound value will be more than equal to current upper bound value
+      } else if (type === 'u' && value >= lowerBound){
+        setUpperBound(value) 
+      }
     }
-    return false;
   }
 
   const leftSideChange = (e) => {
-    if (validSongFilter(e.target.value, 'l')){
-      setLowerBound(e.target.value)
-      filterBySongs()
-    }
+    updateBound(Number(e.target.value), 'l');
   }
 
   const rightSideChange = (e) => {
-    if (validSongFilter(e.target.value, 'u')){
-      setUpperBound(e.target.value)
-      filterBySongs()
-    }
+    updateBound(Number(e.target.value), 'u');
   }
 
   const getRangeOfTracks = () => {
@@ -137,13 +152,6 @@ function App() {
     setAlbums([...currentData]);
   }
 
-  // helper function to regain initial fetch data of albums
-  const resetToFetchedData = () =>{
-    const initialData = initialAlbumsData;
-    console.log(initialData)
-    setAlbums([...initialData]);
-  }
-
   // helper function to sort albums in ascending order of their number of tracks
   const sortByNoOfTracks = () => {
     let currentData = albums;
@@ -160,15 +168,13 @@ function App() {
     setAlbums([...currentData])
   }
 
-  const handleSortOptionChange = (e) => {
-    console.log(e.target.value)
-    if (e.target.value === "alphabetically"){
+  const handleSortOptionChange = (value) => {
+    setCurrentSort(value);
+    if (value === "alphabetically"){
       sortAlphabetically();
-    } else if (e.target.value === "none"){
-      resetToFetchedData();
-    } else if (e.target.value === "tracks"){
+    } else if (value === "tracks"){
       sortByNoOfTracks();
-    } else if (e.target.value === "date"){
+    } else if (value === "date"){
       sortByReleasedDate();
     }
   }
@@ -185,7 +191,7 @@ function App() {
         </div>
         <div className='sort-by-container'>
           <label htmlfor="sort-value">Sort by</label>
-          <select id="sort-value" name="sort-type" defaultValue="none" onChange={handleSortOptionChange}>
+          <select id="sort-value" name="sort-type" defaultValue="none" onChange={(e) => handleSortOptionChange(e.target.value)}>
             <option value="none">None</option>
             <option value="date">Release Date</option>
             <option value="alphabetically">Alphabetically (A-Z)</option>
@@ -196,7 +202,7 @@ function App() {
       <div className='right-panel'>
         <div className='container stats-container'>
           <div className="stat-card">{artistData ? "This artist has an average of " + artistData.popularity + " rating in Spotify" : ""}</div>
-          <div className="stat-card">{albums.length !== 0 ? "This artist has " + albums.length + " listed albums in Spotify" : ""}</div>
+          <div className="stat-card">{albums.length !== 0 ? "This artist has " + initialAlbumsData.length + " listed albums in Spotify" : ""}</div>
           <div className="stat-card">{artistData ? getRangeOfTracks() : ""}</div>
         </div>
         <div className='container album-container'>
