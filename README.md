@@ -29,7 +29,7 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-<img src='https://imgur.com/a/eP8sne5.gif' title='Spotify v2.0 - Video Walkthrough' width='' alt='Spotify v2.0 - Video Walkthrough' />
+<img src='https://imgur.com/a/eP8sne5' title='Spotify v2.0 - Video Walkthrough' width='500' alt='Spotify v2.0 - Video Walkthrough' />
 
 ## License
 
