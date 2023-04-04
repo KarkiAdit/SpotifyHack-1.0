@@ -10,14 +10,14 @@ Time spent: **27** hours spent in total
 
 With v1.0 features, the following **required** functionality was completed in v2.0:
 
-- [ ] **The app includes at least two unique chart developed using the fetched data that tell an interesting story**
-- [ ] **Clicking on an item in the list view displays more details about it**
-- [ ] **Clicking on an item has a direct, unique link to that item's detail view page**
+- [+] **The app includes at least two unique chart developed using the fetched data that tell an interesting story**
+- [+] **Clicking on an item in the list view displays more details about it**
+- [+] **Clicking on an item has a direct, unique link to that item's detail view page**
 
 
 The following **optional** features are implemented:
 
-- [ ] The site's customized dashboard contains more content that explains what is interesting about the data
+- [+] The site's customized dashboard contains more content that explains what is interesting about the data
 - [ ] The site allows users to toggle between different data visualizations
 
 The following **additional** features are implemented:
