@@ -29,7 +29,10 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-<img src='https://imgur.com/a/eP8sne5' title='Spotify v2.0 - Video Walkthrough' width='500' alt='Spotify v2.0 - Video Walkthrough' />
+Here's a walkthrough of implemented required features:
+[Video URL](https://imgur.com/a/eP8sne5)
+
+Video created using Wondershare and Imgur.
 
 ## License
 
