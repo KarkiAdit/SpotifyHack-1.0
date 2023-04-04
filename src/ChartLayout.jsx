@@ -43,6 +43,8 @@ const ChartLayout = () =>{
 
         setMaxTrack(getMaxTrackCount(returnData))
 
+        setMinTrack(getMinTrackCount(returnData))
+
         return sortByReleasedDate(returnData).map((data) => {
             return {name: data.release_date.slice(0, 4), "Total Tracks Released vs Published Year": data.total_tracks}
         })
@@ -56,9 +58,19 @@ const ChartLayout = () =>{
         return maxCount;
       }
 
+      const getMinTrackCount = (data) => {
+        const minCount = data.reduce(
+          (acc, next) => {
+            return next.total_tracks < acc ?  next.total_tracks: acc}, Infinity
+        )
+        return minCount;
+      }
+
     const [data, setData] = useState(null);
 
     const [maxTrack, setMaxTrack] = useState(0);
+
+    const [minTrack, setMinTrack] = useState(0);
 
     useEffect(() => {
         setData(getFilteredData())
@@ -68,7 +80,20 @@ const ChartLayout = () =>{
             <div className="chart-layout">
                 <div className="info-block">
                     <LineChart width={700} height={400} data={data}>
-                        <Line type="monotone" dataKey="Total Tracks Released vs Published Year" stroke="rgb(189, 147, 219)" strokeWidth={3} />
+                        <Line type="monotone" dataKey="Total Tracks Released vs Published Year" stroke="rgb(189, 147, 219)" strokeWidth={7} />
+                        <CartesianGrid stroke="rgb(218, 205, 205)" />
+                        <XAxis dataKey="name" stroke="rgb(218, 205, 205)"/>
+                        <YAxis stroke="rgb(218, 205, 205)"/>
+                        <Tooltip />
+                        <Legend />
+                    </LineChart>
+                    {artistData && <div className='container stats-container'>
+                            <div className="stat-card">{artistData ? "This artist has released a maximum of " + maxTrack + " and a minimum of " + minTrack +" tracks in a calender year" : ""}</div>
+                    </div>}
+                </div>
+                <div className="info-block">
+                    <LineChart width={700} height={400} data={data}>
+                        <Line type="monotone" dataKey="Total Tracks Released vs Published Year" stroke="rgb(189, 147, 219)" strokeWidth={7} />
                         <CartesianGrid stroke="rgb(218, 205, 205)" />
                         <XAxis dataKey="name" stroke="rgb(218, 205, 205)"/>
                         <YAxis stroke="rgb(218, 205, 205)"/>
