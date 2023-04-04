@@ -10,28 +10,26 @@ Time spent: **27** hours spent in total
 
 With v1.0 features, the following **required** functionality was completed in v2.0:
 
-- [+] **The app includes at least two unique chart developed using the fetched data that tell an interesting story**
-- [+] **Clicking on an item in the list view displays more details about it**
-- [+] **Clicking on an item has a direct, unique link to that item's detail view page**
+- [✓] **The app includes at least two unique chart developed using the fetched data that tell an interesting story**
+- [✓] **Clicking on an item in the list view displays more details about it**
+- [✓] **Clicking on an item has a direct, unique link to that item's detail view page**
 
 
 The following **optional** features are implemented:
 
-- [+] The site's customized dashboard contains more content that explains what is interesting about the data
-- [ ] The site allows users to toggle between different data visualizations
+- [✓] The site's customized dashboard contains more content that explains what is interesting about the data
+- [✓] The site allows users to toggle between different data visualizations
 
 The following **additional** features are implemented:
 
-* [ ] An additional pie chart was implemented to share information about top genres from user published albums
-* [ ] A clean up function using Abort Controller was implemented to handle errors caused by async fetch requests in the useEffect
-* [ ] A separate NOT FOUND page was implemented to handle the invalid URLs and redirect to the index page
-* [ ] For state management and data sharing between components/routes, react-router-dom hooks like useLocation, useParams, and useOutletContext were used
+* [✓] An additional pie chart was implemented to share information about top genres from user published albums
+* [✓] A clean up function using Abort Controller was implemented to handle errors caused by async fetch requests in the useEffect
+* [✓] A separate NOT FOUND page was implemented to handle the invalid URLs and redirect to the index page
+* [✓] For state management and data sharing between components/routes, react-router-dom hooks like useLocation, useParams, and useOutletContext were used
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
-
-<img src='https://imgur.com/a/eP8sne5' title='Spotify v2.0 - Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/a/eP8sne5.gif' title='Spotify v2.0 - Video Walkthrough' width='' alt='Spotify v2.0 - Video Walkthrough' />
 
 ## License
 
