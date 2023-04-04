@@ -87,8 +87,6 @@ function CardLayout() {
   const updateBound = (value, type) => {
     // check if change in value is inside of the max-min range
     if (value >= minCount && value <= maxCount){
-      console.log(upperBound, lowerBound, type, value)
-      console.log(type === 'l' && value <= upperBound);
       // update lower bound if intended lower bound value will be lesser than equal to current upper bound value
       if (type === 'l' && value <= upperBound){
         console.log("It's here")
@@ -166,7 +164,7 @@ function CardLayout() {
     <div className="App">
       <div className='left-panel'>
         <Input searchInput={searchInput} setSearchInput={setSearchInput} search={search} />
-        <h1 className='author-title'>{artistData && artistData.name !== "" ? "Artist: " + artistData.name : "" }</h1>
+        <h1 className='author-title'>{artistData && artistData.name !== "" ? "Artist: " + `${artistData.name.toUpperCase()}` : "" }</h1>
         <h2>Show By</h2>
         <p>Number of Songs / album</p>
         <div className='songs-filter'>

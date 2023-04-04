@@ -8,6 +8,7 @@ import {
     Legend,
     CartesianGrid,
     Bar,
+    Cell
   } from "recharts";
 
 const MoreAlbumInfo = () => {
@@ -26,9 +27,11 @@ const MoreAlbumInfo = () => {
           },
     ];
 
+    const COLORS = ["#99dbb4", "#6fa4c5"]
+
     return (<div className="more-info">
                     {albumInfo && <div className='album-card'>
-                                    <h2>{albumInfo.name}</h2>
+                                    <h2>{albumInfo.name.toUpperCase()}</h2>
                                     <img src={albumInfo.images[0].url} />
                                     <div>
                                         <p><span className="heading">Artists</span> {albumInfo.artists.map((artist) => <span className="info">{artist.name}</span>)}</p>
@@ -58,7 +61,11 @@ const MoreAlbumInfo = () => {
                         <Tooltip />
                         <Legend />
                         <CartesianGrid stroke="rgb(218, 205, 205)" />
-                        <Bar dataKey="Album Popularity score vs Average Overall Artist Score" fill="rgb(189, 147, 219)" />
+                        <Bar dataKey="Album Popularity score vs Average Overall Artist Score" fill="rgb(189, 147, 219)">
+                        {data.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index]} />
+                            ))}
+                        </Bar>
                 </BarChart>
                 </div>
             </div>

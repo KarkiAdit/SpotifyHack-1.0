@@ -19,7 +19,7 @@ const Card = (props) => {
 
     return (
     <div className='album-card'>
-        <h2>{props.idx + 1}. {props.data.name}</h2>
+        <h2>{props.idx + 1}. {props.data.name.toUpperCase()}</h2>
         <i className='date'>Released: {props.data.release_date}</i>
         <img src={props.data.images[0].url} />
         <span>Total tracks: {props.data.total_tracks}</span>
