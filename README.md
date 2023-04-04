@@ -1,44 +1,37 @@
-# Web Development Project 5 - *Spotify Hack 1.0*
+# Web Development Project 6 - *Spotify Hack v2.0*
 
 Submitted by: **Aditya Karki**
 
-This web app: **A fully responsive web application which uses Spotify Web API to manipulate the data of artists and their albums in the spotify database. It implements advanced features like dashboard layout, filter, and sort based on user's inputs**
+This web app: **A fully responsive web application which uses Spotify Web API to fetch, analyze, and visually interpret the albums and artists data. It implements advanced features like React/Browser Router, Dashboard layouts, Charts (line, pie, and bar), Filters, and Advanced sorting algorithms**
 
-Time spent: **15** hours spent in total
+Time spent: **27** hours spent in total
 
 ## Required Features
 
-The following **required** functionality is completed:
+With v1.0 features, the following **required** functionality was completed in v2.0:
 
-- [✓] **The list displays a list of data fetched using an API call**
-- [ ✓ ] **Data uses the useEffect React hook and async/await syntax**
-- [ ✓ ] **The app dashboard includes at least three summary statistics about the data such as**
-  - [ ✓ ] *Artist Popularity Score*
-  - [ ✓ ] *Total Albums of the Artist*
-  - [ ✓ ] *Range of Tracks covered by each album*
-- [ ✓ ] **A search bar allows the user to search for an item in the fetched data**
-- [ ✓ ] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
+- [ ] **The app includes at least two unique chart developed using the fetched data that tell an interesting story**
+- [ ] **Clicking on an item in the list view displays more details about it**
+- [ ] **Clicking on an item has a direct, unique link to that item's detail view page**
+
 
 The following **optional** features are implemented:
 
-- [ ✓ ] Multiple filters can be applied simultaneously
-- [ ✓ ] Filters use different input types such as a text input, a selection, or a slider
-- [ ✓ ] The user can enter specific bounds for filter values
+- [ ] The site's customized dashboard contains more content that explains what is interesting about the data
+- [ ] The site allows users to toggle between different data visualizations
 
 The following **additional** features are implemented:
 
-* [ ✓ ] A mobile responsive dashboard panel with Glassmorphism design was implemented using media queries
-* [ ✓ ] Along with multiple get requests, a post request was also made for user authorization to connect with spotify Web API
-* [ ✓ ] Sorting algorithms like Selection sort was used for numerical as well as alphabetical sorting
-* [ ✓ ] Original state was preserved using 1 state variable which preserved original data and reset it when filter was not applied
+* [ ] An additional pie chart was implemented to share information about top genres from user published albums
+* [ ] A clean up function using Abort Controller was implemented to handle errors caused by async fetch requests in the useEffect
+* [ ] A separate NOT FOUND page was implemented to handle the invalid URLs and redirect to the index page
+* [ ] For state management and data sharing between components/routes, react-router-dom hooks like useLocation, useParams, and useOutletContext were used
 
-## Video 
+## Video Walkthrough
 
-https://user-images.githubusercontent.com/68220732/228135037-dc0b529d-3fb5-4c35-965a-d73574b91adf.mp4
+Here's a walkthrough of implemented user stories:
 
-
-<!-- Replace this with whatever GIF tool you used! -->
-GIF created with Wondershare filmora and Imgur.
+<img src='https://imgur.com/a/eP8sne5' title='Spotify v2.0 - Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## License
 
